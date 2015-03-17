@@ -18,7 +18,7 @@ function loadScript() {
     A.onload = function() { 
         console.log('Script loading');
     }   
-    A.src = 'http://scripts-live.shpg.org/TabletoCSVbookmarklet.js';
+    A.src = 'https://raw.githubusercontent.com/justinelam/Table2CSVDownloader/master/TabletoCSVbookmarklet.js';
     document.getElementsByTagName('head')[0].appendChild(A);
     mouseActions();
 }
@@ -33,5 +33,6 @@ function mouseActions() {
     jQuery('table tbody').click( function() {
         var table = $(this)[0];
         tableData(table);
-  })
+        findPosition(table);
+    })
 }
