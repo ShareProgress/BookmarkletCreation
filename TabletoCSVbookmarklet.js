@@ -1,5 +1,8 @@
 
-
+function findPosition(el) {
+    pos = el.position();
+    console.log(pos);
+}
 function tableData(table) {
     var tr = $(table).find('tr');
     var tableString = "";
