@@ -19,6 +19,7 @@ function loadScript() {
         console.log('Script loading');
     }   
     A.src = 'https://rawgit.com/justinelam/Table2CSVDownloader/master/TabletoCSVbookmarklet.js';
+
     document.getElementsByTagName('head')[0].appendChild(A);
     mouseActions();
 }
