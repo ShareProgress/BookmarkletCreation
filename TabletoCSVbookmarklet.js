@@ -40,7 +40,7 @@ function tableData(table) {
     // download as CSV file  //
  
     var a = document.createElement('a');
-    a.href        = 'data:attachment/csv,' + tableString;
+    a.href        = 'data:text/csv;charset=utf-8,' + tableString;
     a.target      = '_blank';
     a.download    = "tabledownload.csv";
     document.body.appendChild(a);
