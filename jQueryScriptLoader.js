@@ -8,9 +8,10 @@ if (window.jQuery) {
         console.log('jQuery loading');
         loadScript();
     }   
-    jq.src = 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js';
+    jq.src = 'http://code.jquery.com/jquery-1.11.2.min.js';
     document.getElementsByTagName('head')[0].appendChild(jq);
 }
+
 
 function loadScript() {
     var A = document.createElement('script');
@@ -18,22 +19,41 @@ function loadScript() {
     A.onload = function() { 
         console.log('Script loading');
     }   
-    A.src = 'https://rawgit.com/justinelam/Table2CSVDownloader/master/TabletoCSVbookmarklet.js';
-
+    A.src = 'http://localhost/TabletoCSVbookmarklet.js';
     document.getElementsByTagName('head')[0].appendChild(A);
     mouseActions();
 }
 
 function mouseActions() {
-    jQuery('table').mouseover( function() {
-       $(this).css('border','5px black solid');
+    var $ = jQuery;
+    $('table').mouseover( function() {
+
+       var pos = $('table').offset();
+       var width = $('table').width();
+       var height= $('table').height();
+       //if table-overlay already exists show it
+       if ($( "div.table-overlay" ).length ) {
+        $( "div.table-overlay" ).show();
+       } else {
+
+           $('body').append($("<div></div>").addClass("table-overlay"));
+
+           //setting position, height, width, color
+
+           $('div.table-overlay').offset(pos);
+           $('div.table-overlay').width(width);
+           $('div.table-overlay').height(height);
+           $('div.table-overlay').css({"position": "relative", "background-color": "rgba(0,0,0,0.4)", "z-index":100000, "pointer-events": "none","display": "table"});
+           $('div.table-overlay').append("<div>Click to download table as CSV file</div>");
+           $('div.table-overlay div').css({"color": "white", "pointer-events": "none","display": "table-cell", "text-align": "center", "vertical-align": "middle", "font-size": "26px", "font-family": "Arial", "font-weight": "800"});
+        }
+
     });
-    jQuery('table').mouseleave( function() {
-        $(this).css('border', 'none');
+    $('table').mouseleave( function() {
+        $('div.table-overlay').hide();
     });
-    jQuery('table tbody').click( function() {
+    $('table tbody').click( function() {
         var table = $(this)[0];
         tableData(table);
-        findPosition(table);
-    })
+  })
 }
