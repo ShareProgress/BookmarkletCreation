@@ -29,25 +29,27 @@ function mouseActions() {
     var $ = jQuery;
     $('table').mouseover( function() {
 
-       var pos = $('table').offset();
-       var width = $('table').width();
-       var height= $('table').height();
+       var pos = $(this).offset();
+       var width = $(this).width();
+       var height= $(this).height();;
+       $(this).css("cursor","pointer");
        //if table-overlay already exists show it
        if ($( "div.table-overlay" ).length ) {
         $( "div.table-overlay" ).show();
        } else {
-
            $('body').append($("<div></div>").addClass("table-overlay"));
-
-           //setting position, height, width, color
-
-           $('div.table-overlay').offset(pos);
-           $('div.table-overlay').width(width);
-           $('div.table-overlay').height(height);
-           $('div.table-overlay').css({"position": "relative", "background-color": "rgba(0,0,0,0.4)", "z-index":100000, "pointer-events": "none","display": "table"});
            $('div.table-overlay').append("<div>Click to download table as CSV file</div>");
-           $('div.table-overlay div').css({"color": "white", "pointer-events": "none","display": "table-cell", "text-align": "center", "vertical-align": "middle", "font-size": "26px", "font-family": "Arial", "font-weight": "800"});
         }
+
+       //setting position, height, width, color
+
+       $('div.table-overlay').offset(pos);
+       $('div.table-overlay').width(width);
+       $('div.table-overlay').height(height);
+       $('div.table-overlay').css({"position": "relative", "background-color": "rgba(0,0,0,0.4)", "z-index":100000, "pointer-events": "none", "cursor": "pointer","display": "table"});
+       
+       $('div.table-overlay div').css({"color": "white", "pointer-events": "none","display": "table-cell", "text-align": "center", "vertical-align": "middle", "font-size": "26px", "font-family": "Arial", "font-weight": "800"});
+        
 
     });
     $('table').mouseleave( function() {
