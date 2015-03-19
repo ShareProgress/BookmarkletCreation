@@ -14,7 +14,7 @@ function csvUTF16Download(str) {
     var a = document.createElement('a');
     a.href        = 'data:text/csv;charset=utf-16,' + str;
     a.target      = '_blank';
-    a.download    = "UTF-16tabledownload.csv";
+    a.download    = "tabledownload.csv";
     document.body.appendChild(a);
     a.click();
 }
@@ -29,7 +29,7 @@ function utf16Checker(str) {
         csvNormalDownload(str);
     } else {
         csvUTF16Download(str);
-        alert("Your table data has been downloaded as a UTF-16 formatted csv file, but it still may not open correctly in MS Excel on Mac.");
+        alert("NOTE: Because this table contains special characters, the data has been downloaded in UTF-16 format. This may cause compatibility issues with some spreadsheet programs.");
     }
 }
 
