@@ -25,7 +25,6 @@ function utf16Checker(str) {
     var re = /%u\d/;
     var string = escape(str);
     var res = string.search(re);
-    console.log(res);
     if ( res === -1) {
         csvNormalDownload(str);
     } else {
