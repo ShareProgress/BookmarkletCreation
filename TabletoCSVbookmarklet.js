@@ -1,3 +1,38 @@
+function csvNormalDownload(str) {
+    // download as CSV file  //
+    var a = document.createElement('a');
+    a.href        = 'data:text/csv,' + str;
+    a.target      = '_blank';
+    a.download    = "tabledownload.csv";
+    document.body.appendChild(a);
+    a.click();
+}
+
+function csvUTF16Download(str) {
+    // download as UTF-16 charset CSV file, for Excel //
+    
+    var a = document.createElement('a');
+    a.href        = 'data:text/csv;charset=utf-16,' + str;
+    a.target      = '_blank';
+    a.download    = "UTF-16tabledownload.csv";
+    document.body.appendChild(a);
+    a.click();
+}
+
+// check whether the table contains 
+function utf16Checker(str) {
+
+    var re = /%u\d/;
+    var string = escape(str);
+    var res = string.search(re);
+    console.log(res);
+    if ( res === -1) {
+        csvNormalDownload(str);
+    } else {
+        csvUTF16Download(str);
+        alert("Your table data has been downloaded as a UTF-16 formatted csv file, but it still may not open correctly in MS Excel on Mac.");
+    }
+}
 
 
 function tableData(table) {
@@ -35,17 +70,12 @@ function tableData(table) {
        //remove the last comma in a row so that there isn't an extra column
        tableString = tableString.substring(0, tableString.length - 1);
        tableString += "%0A";
-    });    
-    
-
-
-    // download as CSV file  //
- 
-    var a = document.createElement('a');
-    a.href        = 'data:text/csv,' + tableString;
-    a.target      = '_blank';
-    a.download    = "tabledownload.csv";
-    document.body.appendChild(a);
-    a.click();
+       
+    }); 
+    utf16Checker(tableString); 
 }
+
+
+
+    
 
