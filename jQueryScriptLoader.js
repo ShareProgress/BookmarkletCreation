@@ -19,7 +19,8 @@ function loadScript() {
     A.onload = function() { 
         console.log('Script loading');
     }   
-    A.src = 'http://localhost/TabletoCSVbookmarklet.js';
+    // A.src = 'http://scripts.shpg.org/TabletoCSVbookmarklet.js';
+    A.src = 'https://rawgit.com/justinelam/Table2CSVDownloader/master/TabletoCSVbookmarklet.js';
     document.getElementsByTagName('head')[0].appendChild(A);
     mouseActions();
 }
