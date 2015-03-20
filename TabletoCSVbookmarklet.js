@@ -51,21 +51,18 @@ function tableData(table) {
     tableData.forEach(function(entry) {
    
       entry.forEach(function(i) {
-        //escaping spaces, commas, double quotes and breaks
+        //escaping spaces, double quotes and breaks
         var space = " ",
             re = new RegExp(space, "g"),
-            comma = ",",
             doublequotes = '"';
             linebreak = "\n";
             rdq = new RegExp(doublequotes, "g");
-            rc = new RegExp(comma,"g");
             rlb = new RegExp(linebreak,"g");
         i = i.trim();
         i = i.replace(re, "%20");
         i = i.replace(rdq, '\""');
-        i = i.replace(rc, '%2C');
         i = i.replace(rlb,'%0D');
-        console.log(i);
+
         //add quotes around entire cell so that commas won't split the cell
         tableString += '"';
         tableString += i;
