@@ -58,7 +58,7 @@ function tableData(table) {
             rdq = new RegExp(doublequotes, "g");
         i = i.trim();
         i = i.replace(re, "%20");
-        i = i.replace(rdq, '\"');
+        i = i.replace(rdq, '%22');
         console.log(i);
         //add quotes around entire cell so that commas won't split the cell
         tableString += '"';
