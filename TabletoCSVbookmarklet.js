@@ -54,8 +54,10 @@ function tableData(table) {
         //escaping spaces and double quotes
         var space = " ",
             re = new RegExp(space, "g"),
+            comma = ",",
             doublequotes = '"';
             rdq = new RegExp(doublequotes, "g");
+            rc = new RegExp(comma,"g");
         i = i.trim();
         i = i.replace(re, "%20");
         i = i.replace(rdq, '\"');
