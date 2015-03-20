@@ -31,7 +31,7 @@ function mouseActions() {
 
        var pos = $(this).offset();
        var width = $(this).width();
-       var height= $(this).height();;
+       var height= $(this).height();
        $(this).css("cursor","pointer");
        //if table-overlay already exists show it
        if ($( "div.table-overlay" ).length ) {
