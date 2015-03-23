@@ -19,8 +19,9 @@ function loadScript() {
     A.onload = function() { 
         console.log('Script loading');
     }   
-    // A.src = 'http://scripts.shpg.org/TabletoCSVbookmarklet.js';
+    // A.src = 'http://scripts-live.shpg.org/TabletoCSVbookmarklet.js';
     A.src = 'https://rawgit.com/justinelam/Table2CSVDownloader/master/TabletoCSVbookmarklet.js';
+    // A.src = 'https://localhost/TabletoCSVbookmarklet.js';
     document.getElementsByTagName('head')[0].appendChild(A);
     mouseActions();
 }
@@ -37,11 +38,12 @@ function mouseActions() {
        if ($( "div.table-overlay" ).length ) {
         $( "div.table-overlay" ).show();
        } else {
+        // otherwise add a div element with class "table-overlay" to the body element
            $('body').append($("<div></div>").addClass("table-overlay"));
            $('div.table-overlay').append("<div>Click to download table as CSV file</div>");
         }
 
-       //setting position, height, width, color
+       //set position, height, width, color of table-overlay to match the table that is hovered over.
 
        $('div.table-overlay').offset(pos);
        $('div.table-overlay').width(width);
@@ -53,9 +55,11 @@ function mouseActions() {
 
     });
     $('table').mouseleave( function() {
+      //when mouse leaves the table, hide the div.table-overlay element.
         $('div.table-overlay').hide();
     });
     $('table tbody').click( function() {
+      // when table is clicked, start processing the data in table to be downloaded
         var table = $(this)[0];
         tableData(table);
   })
