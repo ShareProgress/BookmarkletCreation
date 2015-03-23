@@ -1,5 +1,5 @@
 function csvNormalDownload(str) {
-    // download as CSV file  //
+    // download table as CSV file  //
     var a = document.createElement('a');
     a.href        = 'data:text/csv,' + str;
     a.target      = '_blank';
@@ -9,7 +9,7 @@ function csvNormalDownload(str) {
 }
 
 function csvUTF16Download(str) {
-    // download as UTF-16 charset CSV file, for Excel //
+    // download table as UTF-16 charset CSV file, for Excel //
     
     var a = document.createElement('a');
     a.href        = 'data:text/csv;charset=utf-16,' + str;
@@ -19,7 +19,7 @@ function csvUTF16Download(str) {
     a.click();
 }
 
-// check whether the table contains 
+// check whether the table contains UTF-16 characters and determine what type of file should be downloaded
 function utf16Checker(str) {
 
     var re = /%u\d/;
@@ -47,11 +47,10 @@ function tableData(table) {
     });
     
     
-    // for each element in each array find ones with a comma and escape it with "/"
     tableData.forEach(function(entry) {
    
       entry.forEach(function(i) {
-        //escaping spaces, double quotes and breaks
+        //for each cell's content escape spaces, double quotes and breaks
         var space = " ",
             re = new RegExp(space, "g"),
             doublequotes = '"';
