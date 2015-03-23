@@ -1,4 +1,43 @@
-function csvNormalDownload(str) {
+var $$;
+
+function init() {
+    $$ = jQuery;
+    $$('table').mouseover( function() {
+
+       var pos = $$(this).offset();
+       var width = $$(this).width();
+       var height= $$(this).height();
+       $$(this).css("cursor","pointer");
+       //if table-overlay already exists show it
+       if ($$( "div.table-overlay" ).length ) {
+        $$( "div.table-overlay" ).show();
+       } else {
+        // otherwise add a div element with class "table-overlay" to the body element
+           $$('body').append($$("<div></div>").addClass("table-overlay"));
+           $$('div.table-overlay').append("<div>Click to download table as CSV file</div>");
+        }
+
+       //set position, height, width, color of table-overlay to match the table that is hovered over.
+
+       $$('div.table-overlay').offset(pos);
+       $$('div.table-overlay').width(width);
+       $$('div.table-overlay').height(height);
+       $$('div.table-overlay').css({"position": "relative", "background-color": "rgba(0,0,0,0.4)", "z-index":100000, "pointer-events": "none", "cursor": "pointer","display": "table"});
+       
+       $$('div.table-overlay div').css({"color": "white", "pointer-events": "none","display": "table-cell", "text-align": "center", "vertical-align": "middle", "font-size": "26px", "font-family": "Arial", "font-weight": "800"});
+        
+
+    });
+    $$('table').mouseleave( function() {
+      //when mouse leaves the table, hide the div.table-overlay element.
+        $$('div.table-overlay').hide();
+    });
+    $$('table tbody').click( function() {
+      // when table is clicked, start processing the data in table to be downloaded
+        var table = $$(this)[0];
+        tableData(table);
+  })
+}function csvNormalDownload(str) {
     // download table as CSV file  //
     var a = document.createElement('a');
     a.href        = 'data:text/csv,' + str;
@@ -35,13 +74,13 @@ function utf16Checker(str) {
 
 
 function tableData(table) {
-    var $ = jQuery;
-    var tr = $(table).children();
+
+    var tr = $$(table).children();
     var tableString = "";
 
-    var tableData = $.map(tr, function(tr) {
-     var row = [$.map($(tr).children(), function(td) {
-                    return $(td).text();
+    var tableData = $$.map(tr, function(tr) {
+     var row = [$$.map($$(tr).children(), function(td) {
+                    return $$(td).text();
                 })];
      return row;
     });
