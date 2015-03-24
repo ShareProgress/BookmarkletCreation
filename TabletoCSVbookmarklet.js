@@ -53,7 +53,21 @@ function utf16Checker(str) {
   return (res !== -1);  
 }
 
+// Define array forEach for backwards compatibility
+if (!Array.prototype.forEach) {
+  Array.prototype.forEach = function(fun) {
+    var len = this.length;
+    if (typeof fun !== "function") { throw new TypeError(); }
 
+    var thisp = arguments[1];
+    for (var i = 0; i < len; i++) {
+      if (i in this) { fun.call(thisp, this[i], i, this); }
+    }
+  };
+}
+
+
+//converting data in table into CSV-friendly format
 function tableData(table) {
   var tr = table.find('> tr, > tbody > tr');  
   var tableString = "";
