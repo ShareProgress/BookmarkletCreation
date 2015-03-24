@@ -2,39 +2,26 @@ var $$;
 
 function init() {
     $$ = jQuery;
-    $$('table').mouseover( function() {
-
+    $$('table').mouseenter( function() {
+      //set position, height, width, color of a new div.table-overlay to match the table that is hovered over. Set cursor as pointer.
        var pos = $$(this).offset();
        var width = $$(this).width();
        var height= $$(this).height();
        $$(this).css("cursor","pointer");
-       //if table-overlay already exists show it
-       if ($$( "div.table-overlay" ).length ) {
-        $$( "div.table-overlay" ).remove();
-       } else {
-        // otherwise add a div element with class "table-overlay" to the body element
-           
-        }
-
-       //set position, height, width, color of table-overlay to match the table that is hovered over.
-       var tableOverlay = $$("<div></div>");  
-       tableOverlay = tableOverlay.addClass('table-overlay');
-
-       tableOverlay.offset(pos);
-       tableOverlay.width(width);
-       tableOverlay.height(height);
-       tableOverlay.css({"position": "absolute", "background-color": "rgba(0,0,0,0.4)", "z-index":100000, "pointer-events": "none", "cursor": "pointer","display": "table"});
+       
+       var tableOverlay = $$("<div></div>").addClass('table-overlay').offset(pos).width(width).height(height).css({"position": "absolute", "background-color": "rgba(0,0,0,0.4)", "z-index":100000, "pointer-events": "none", "cursor": "pointer","display": "table"});
+       //add inner div for text and style
        tableOverlay =  tableOverlay.append("<div></div>");
 
        tableOverlay.children('div').text('Click to download table as CSV file').css({"color": "white", "pointer-events": "none","display": "table-cell", "text-align": "center", "vertical-align": "middle", "font-size": "26px", "font-family": "Arial", "font-weight": "800"});
-
+       //append the styled div.table-overlay to the body.
        $$('body').append(tableOverlay); 
         
 
     });
     $$('table').mouseleave( function() {
       //when mouse leaves the table, hide the div.table-overlay element.
-        $$('div.table-overlay').hide();
+        $$('div.table-overlay').remove();
     });
     $$('table').click( function() {
       // when table is clicked, start processing the data in table to be downloaded
