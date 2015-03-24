@@ -61,7 +61,7 @@ function csvDownload(str, utf) {
   } else {
     a.href        = 'data:text/csv,' + str;
   }
-  a.target      = '_blank';
+  // a.target      = '_blank';
   a.download    = "tabledownload.csv";
   document.body.appendChild(a);
   a.click();
@@ -107,7 +107,7 @@ function tableData(table) {
 
   if (utf16Checker(tableString)) {
     csvDownload(tableString, true);
-    alert("NOTE: Because this table contains special characters, the data has been downloaded in UTF-16 format. This may cause compatibility issues with some spreadsheet programs.");
+    alert("NOTE: Because this table contains special characters, the data has been downloaded in UTF-16 format. \n\nThis may cause compatibility issues with some spreadsheet programs.");
   } else {
     csvDownload(tableString, false);
   }   
