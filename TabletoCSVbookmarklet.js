@@ -82,19 +82,19 @@ function tableData(table) {
   
   tableData.forEach(function(entry) {
  
-    entry.forEach(function(i) {
+    entry.forEach(function(j) {
       //for each cell's content escape spaces, double quotes and breaks
       var re = new RegExp(" ", "g"),
           rdq = new RegExp('"', "g"),
           rlb = new RegExp("\n","g");
-      i = i.trim();
-      i = i.replace(re, "%20");
-      i = i.replace(rdq, '\"');
-      i = i.replace(rlb,'%0D');
+      j = j.trim();
+      j = j.replace(re, "%20");
+      j = j.replace(rdq, '\"');
+      j = j.replace(rlb,'%0D');
 
       //add quotes around entire cell so that commas won't split the cell
       tableString += '"';
-      tableString += i;
+      tableString += j;
       tableString += '",';
       
     })
