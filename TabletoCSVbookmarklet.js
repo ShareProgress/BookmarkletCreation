@@ -29,7 +29,7 @@ function init() {
 
     var tableOverlay = $$("<div></div>").addClass('table-overlay');
     tableOverlay.offset(pos).width(width).height(height);
-    tableOverlay.css({"position": "absolute", "background-color": "rgb(0,0,0)","background-color": "rgba(0,0,0,0.4)", "z-index":100000, "pointer-events": "none", "cursor": "pointer","display": "table"});
+    tableOverlay.css({"position": "absolute", "background": "rgb(0,0,0)","background": "rgba(0,0,0,0.4)", "z-index":100000, "pointer-events": "none", "cursor": "pointer","display": "table"});
      //add div for tableText and style
      
     var tableText = $$("<div></div>").addClass('table-text');
