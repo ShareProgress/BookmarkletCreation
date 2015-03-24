@@ -61,7 +61,7 @@ function csvDownload(str, utf) {
   } else {
     a.href        = 'data:text/csv,' + str;
   }
-  // a.target      = '_blank';
+  a.target      = '_blank';
   a.download    = "tabledownload.csv";
   document.body.appendChild(a);
   a.click();
