@@ -1,7 +1,6 @@
-// change the scriptURL variable to add your own script file
+// change the scriptURL variable to add your own script file. This one links to our TableThat bookmarklet.
 
 var scriptURL = "https://scripts.shpg.org/TabletoCSVbookmarklet.js";
-//'//localhost/TabletoCSVbookmarklet.js'; shareprogress-scripts.s3-website-us-west-2.amazonaws.com/TabletoCSVbookmarklet.js; //rawgit.com/justinelam/Table2CSVDownloader/master/TabletoCSVbookmarklet.js //scripts-live.shpg.org/TabletoCSVbookmarklet.js //localhost/TabletoCSVbookmarklet.js //rawgit.com/justinelam/Table2CSVDownloader/master/TabletoCSVbookmarklet.js
 
 
 if (window.jQuery) { 
@@ -20,7 +19,7 @@ if (window.jQuery) {
 
 function loadScript() {
 
-  //add new script file to the DOM then run the init function in script file. Change the init() to whatever function you need to run.
+  //add new script file to the DOM
 
     var A = document.createElement('script');
     A.type = 'text/javascript'; 
