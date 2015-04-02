@@ -1,6 +1,6 @@
 // change the scriptURL variable to add your own script file. This one links to our TableThat bookmarklet.
 
-var scriptURL = "https://scripts.shpg.org/TabletoCSVbookmarklet.js";
+var scriptURL = "https://scripts.shpg.org/TableThat.js";
 
 
 if (window.jQuery) { 
